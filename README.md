@@ -1,8 +1,8 @@
 # IoT Bike Ride Logger with Energy Harvesting [RideSync]
-#Project Overview
+# Project Overview
 This project is an IoT-based solution to log data from bike rides, utilizing multiple energy-harvesting techniques and low-power BLE transmission. The system collects data from sensors to monitor GPS location, acceleration, suspension motion, and other key parameters. Data is transmitted to a smartphone and uploaded to a cloud server for storage and visualization.
 
-#Features
+# Features
 Energy Harvesting: Collect energy from multiple sources such as wheel rotation, suspension motion, and thermal gradients (e.g., brake and contact points).
 Data Collection: 
  Log data from various sensors, including:
