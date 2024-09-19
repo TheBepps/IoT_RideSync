@@ -1,0 +1,6 @@
+MQTT client for App Inventor: https://ullisroboterseite.de/android-AI2-PahoMQTT-en.html
+
+MAP reference: https://ai2.appinventor.mit.edu/reference/components/maps.html
+Navigation API key: https://openrouteservice.org/dev/#/home
+
+MAP tutorial: https://www.youtube.com/watch?v=dy54OixThW4
