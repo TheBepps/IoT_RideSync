@@ -1,0 +1,9 @@
+-Running the database
+
+1. New terminal: cd C:\\Program Files\InfluxData\
+2. influxd.exe
+
+-Running Influx CLI [in alternative -> http://localhost:8086/]
+
+1. New terminal: cd C:\\Program Files\InfluxData\Influx
+2. influx.exe
