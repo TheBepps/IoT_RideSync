@@ -1,0 +1,225 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 2,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "default": true,
+          "type": "influxdb",
+          "uid": "adz58zp556pkwc"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "basemap": {
+            "config": {},
+            "name": "Layer 0",
+            "type": "osm-standard"
+          },
+          "controls": {
+            "mouseWheelZoom": true,
+            "showAttribution": true,
+            "showDebug": false,
+            "showMeasure": false,
+            "showScale": true,
+            "showZoom": true
+          },
+          "layers": [
+            {
+              "config": {
+                "arrow": 0,
+                "style": {
+                  "color": {
+                    "fixed": "dark-green"
+                  },
+                  "lineWidth": 2,
+                  "opacity": 1,
+                  "rotation": {
+                    "fixed": 0,
+                    "max": 360,
+                    "min": -360,
+                    "mode": "mod"
+                  },
+                  "size": {
+                    "fixed": 5,
+                    "max": 15,
+                    "min": 2
+                  },
+                  "symbol": {
+                    "fixed": "img/icons/marker/circle.svg",
+                    "mode": "fixed"
+                  },
+                  "symbolAlign": {
+                    "horizontal": "center",
+                    "vertical": "center"
+                  },
+                  "textConfig": {
+                    "fontSize": 12,
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "textAlign": "center",
+                    "textBaseline": "middle"
+                  }
+                }
+              },
+              "filterData": {
+                "id": "byRefId",
+                "options": "A"
+              },
+              "location": {
+                "latitude": "_value_lat {_field_lat=\"Latitude\", _field_lon=\"Longitude\", _measurement_lat=\"gps_location\", _measurement_lon=\"gps_location\", _start_lat=\"2024-09-27 02:45:26.478 +0000 UTC\", _start_lon=\"2024-09-27 02:45:26.478 +0000 UTC\", _stop_lat=\"2024-09-27 08:45:26.478 +0000 UTC\", _stop_lon=\"2024-09-27 08:45:26.478 +0000 UTC\", host=\"raspberrypi\", topic=\"RideSync/LocationSensor/GPS\"}",
+                "longitude": "_value_lon {_field_lat=\"Latitude\", _field_lon=\"Longitude\", _measurement_lat=\"gps_location\", _measurement_lon=\"gps_location\", _start_lat=\"2024-09-27 02:45:26.478 +0000 UTC\", _start_lon=\"2024-09-27 02:45:26.478 +0000 UTC\", _stop_lat=\"2024-09-27 08:45:26.478 +0000 UTC\", _stop_lon=\"2024-09-27 08:45:26.478 +0000 UTC\", host=\"raspberrypi\", topic=\"RideSync/LocationSensor/GPS\"}",
+                "mode": "auto"
+              },
+              "name": "Layer 1",
+              "tooltip": true,
+              "type": "route"
+            },
+            {
+              "config": {
+                "showLegend": false,
+                "style": {
+                  "color": {
+                    "fixed": "transparent"
+                  },
+                  "opacity": 0.3,
+                  "rotation": {
+                    "fixed": 0,
+                    "max": 360,
+                    "min": -360,
+                    "mode": "mod"
+                  },
+                  "size": {
+                    "fixed": 5,
+                    "max": 15,
+                    "min": 2
+                  },
+                  "symbol": {
+                    "fixed": "img/icons/marker/x-mark.svg",
+                    "mode": "fixed"
+                  },
+                  "symbolAlign": {
+                    "horizontal": "center",
+                    "vertical": "center"
+                  },
+                  "textConfig": {
+                    "fontSize": 12,
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "textAlign": "center",
+                    "textBaseline": "middle"
+                  }
+                }
+              },
+              "filterData": {
+                "id": "byRefId",
+                "options": "A"
+              },
+              "location": {
+                "mode": "auto"
+              },
+              "name": "dummy layer for auto zoom (https://github.com/grafana/grafana/issues/89777#issuecomment-2378482128)",
+              "tooltip": false,
+              "type": "markers"
+            }
+          ],
+          "tooltip": {
+            "mode": "details"
+          },
+          "view": {
+            "allLayers": true,
+            "id": "fit",
+            "lastOnly": false,
+            "lat": 0,
+            "layer": "dummy layer for auto zoom (https://github.com/grafana/grafana/issues/89777#issuecomment-2378482128)",
+            "lon": 0,
+            "padding": 1,
+            "shared": false,
+            "zoom": 17
+          }
+        },
+        "pluginVersion": "11.2.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "adz58zp556pkwc"
+            },
+            "query": "lat = from(bucket: \"GPS_MQTT_connection\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"gps_location\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Latitude\")\r\n  |> filter(fn: (r) => r[\"host\"] == \"raspberrypi\")\r\n  |> filter(fn: (r) => r[\"topic\"] == \"RideSync/LocationSensor/GPS\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> map(fn: (r) => ({ r with latitude: r._value - 3.14 }))  // Rename _value to latitude\r\n\r\nlon = from(bucket: \"GPS_MQTT_connection\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"gps_location\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Longitude\")\r\n  |> filter(fn: (r) => r[\"host\"] == \"raspberrypi\")\r\n  |> filter(fn: (r) => r[\"topic\"] == \"RideSync/LocationSensor/GPS\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> map(fn: (r) => ({ r with longitude: r._value / 3.14 }))  // Rename _value to longitude\r\n\r\njoin(\r\n  tables: {lat: lat, lon: lon},\r\n  on: [\"_time\", \"host\", \"topic\"]\r\n)\r\n  |> yield(name: \"joined\")\r\n",
+            "refId": "A"
+          }
+        ],
+        "title": "Panel Title",
+        "type": "geomap"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "2024-09-27T16:30:00.000Z",
+      "to": "2024-09-27T17:30:59.000Z"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "New dashboard",
+    "uid": "edz5a8za9o4xsc",
+    "version": 19,
+    "weekStart": ""
+  }
