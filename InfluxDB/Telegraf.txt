@@ -10,3 +10,22 @@ Documentation: https://github.com/influxdata/telegraf
 Input parser configuration hint. https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
 
 Tutorial: https://www.youtube.com/watch?v=a5GL-jn5q4g&list=PLz0t90fOInA5esYz9ytWzX89HT5NvLkxc&index=4
+
+
+Rpi:
+nano ~/.bashrc at the end of the file set the token of the telegraf api key
+
+Running telegraf at the startup with the token parameters
+sudo nano /etc/systemd/system/telegraf.service
+
+[Unit]
+Description=Telegraf
+After=network.target
+
+[Service]
+Environment="INFLUX_TOKEN=J-Dodz-kBNGjRna1h6g94cKmG7Bhgj3UuXto-XlbUnrnGBNgzETcuYOWJ3XlKtxNVVv1UOtJTnL4X0hP7XQwfg=="
+ExecStart=/usr/bin/telegraf --config /etc/telegraf/telegraf.conf
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
