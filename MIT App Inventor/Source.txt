@@ -4,3 +4,6 @@ MAP reference: https://ai2.appinventor.mit.edu/reference/components/maps.html
 Navigation API key: https://openrouteservice.org/dev/#/home
 
 MAP tutorial: https://www.youtube.com/watch?v=dy54OixThW4
+
+
+MQTT and BLE extensions for appinventor are inside this folder
