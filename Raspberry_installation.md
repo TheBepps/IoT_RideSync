@@ -55,8 +55,10 @@ sudo systemctl enable grafana-server
 5. Save the Telegraf configuration; on Rpi terminal:
    ```bash
    sudo nano /etc/systemd/system/telegraf.service
+   ```
    Replace the content with:
-   ```ini6   [Unit]
+   ```ini
+   [Unit]
    Description=Telegraf
    After=network.target
 
