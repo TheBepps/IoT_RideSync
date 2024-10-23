@@ -28,23 +28,6 @@ wget -qO - https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 echo "deb https://repos.influxdata.com/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 sudo apt update
 sudo apt install telegraf -y
-sudo nano /etc/systemd/system/telegraf.service
-```
-Replace the content with:
-```ini
-[Unit]
-Description=Telegraf
-After=network.target
-
-[Service]
-Environment="INFLUX_TOKEN=YOUR_INFLUX_TOKEN"
-ExecStart=/usr/bin/telegraf --config /etc/telegraf/telegraf.conf
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-```
-```bash
 sudo systemctl start telegraf
 sudo systemctl enable telegraf
 ```
@@ -59,14 +42,48 @@ sudo systemctl start grafana-server
 sudo systemctl enable grafana-server
 ```
 
-## Step 5: Configure Grafana
+## Step 5: Configure InfluxDB and Telegraf
+1. Access InfluxDB: Open your web browser and go to `http://<YOUR_RASPBERRY_PI_IP>:8086`. 
+   - To find your Raspberry Pi's IP, you can run `hostname -I` in the terminal.
+2. Set your Raspberry Pi's IP to be static using your router's DHCP settings. (Refer to your router's documentation for specific steps.)
+3. Complete the **Initial user setup** in InfluxDB and save your **<YOUR_INFLUX_TOKEN>**.
+4. Create a Telegraf configuration:
+   - Navigate to **Load data** > **Telegraf** > **Create Configuration**.
+   - Choose a bucket and select **MQTT** as the data source.
+   - Replace the default configuration with the project's configuration file located at `IoT_RideSync\InfluxDB\GPS_MQTT_tag\gps_mqtt_tag.conf`.
+   - Save the resulting **<SETUP_INSTRUCTION>** configuration.
+5. Save the Telegraf configuration; on Rpi terminal:
+   ```bash
+   sudo nano /etc/systemd/system/telegraf.service
+   Replace the content with:
+   ```ini6   [Unit]
+   Description=Telegraf
+   After=network.target
+
+   [Service]
+   Environment="INFLUX_TOKEN=<YOUR_INFLUX_TOKEN>"
+   ExecStart=/usr/bin/telegraf --config http://||||<SETUP_INSTRUCTION>(command to start the Telegraf agent running on your machine)||||
+   Restart=on-failure
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+6. Restart Telegraf:
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl restart telegraf
+   ```
+
+## Step 6: Configure Grafana
 1. Access Grafana: Open your web browser and go to `http://<YOUR_RASPBERRY_PI_IP>:3000`.
 2. Default login: Username: `admin`, Password: `admin` (change the password upon first login).
 3. Add InfluxDB as a Data Source:
-   - Go to **Configuration** (gear icon) > **Data Sources** > **Add data source**.
+   - Go to **Connections** (menu) > **Data Sources** > **Add data source**.
    - Select **InfluxDB** and configure it according to your setup.
+4. Import RideSync dashboard:
+   - Go to **Dashboard** > **New** > **Import** > upload the project dashboard (`IoT_RideSync\Grafana\GPS_MQTT_magnetometer.json`) > Select InfluxDB as datasource.
 
-## Step 6: Validate Installation
+## Step 7: Validate Installation
 ```bash
 sudo systemctl status influxdb
 sudo systemctl status telegraf

@@ -472,7 +472,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"GPS_MQTT_connection\")  // Replace with your actual bucket name\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r._measurement == \"arduino_data\" and (r._field == \"AccX\" or r._field == \"AccY\" or r._field == \"AccZ\"))\r\n  |> map(fn: (r) => ({ \r\n        _time: r._time, \r\n        _field: r._field, \r\n        _value: r._value / 1000.0  // Divide the value by 1000\r\n    })) \r\n  |> keep(columns: [\"_time\", \"_value\", \"_field\"])\r\n",
+          "query": "from(bucket: \"GPS_MQTT_connection\")  // Replace with your actual bucket name\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r._measurement == \"arduino_data\" and (r._field == \"AccX\" or r._field == \"AccY\" or r._field == \"AccZ\"))\r\n  |> map(fn: (r) => ({ \r\n        _time: r._time, \r\n        _field: r._field, \r\n        _value: r._value / 1000.0  // Divide the value by 1000\r\n    })) \r\n  |> keep(columns: [\"_time\", \"_value\", \"_field\"])\r\n  |> aggregateWindow(every: \r\n      if int(v: v.timeRangeStop) - int(v: v.timeRangeStart) < 120 * 60 * 1000000000 then 1s else 1m, \r\n      fn: mean, \r\n      createEmpty: false)\r\n",
           "refId": "A"
         }
       ],
@@ -698,7 +698,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"GPS_MQTT_connection\")  // Replace with your actual bucket name\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r._measurement == \"arduino_data\" and (r._field == \"MagX\" or r._field == \"MagY\" or r._field == \"MagZ\"))\r\n  |> map(fn: (r) => ({ \r\n        _time: r._time, \r\n        _field: r._field, \r\n        _value: r._value / 1000.0  // Divide the value by 1000\r\n    })) \r\n  |> keep(columns: [\"_time\", \"_value\", \"_field\"])\r\n",
+          "query": "from(bucket: \"GPS_MQTT_connection\")  // Replace with your actual bucket name\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r._measurement == \"arduino_data\" and (r._field == \"MagX\" or r._field == \"MagY\" or r._field == \"MagZ\"))\r\n  |> map(fn: (r) => ({ \r\n        _time: r._time, \r\n        _field: r._field, \r\n        _value: r._value / 1000.0  // Divide the value by 1000\r\n    })) \r\n  |> keep(columns: [\"_time\", \"_value\", \"_field\"])\r\n  |> aggregateWindow(every: \r\n      if int(v: v.timeRangeStop) - int(v: v.timeRangeStart) < 120 * 60 * 1000000000 then 1s else 1m, \r\n      fn: mean, \r\n      createEmpty: false)\r\n",
           "refId": "A"
         }
       ],
@@ -1074,7 +1074,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "from(bucket: \"GPS_MQTT_connection\")  // Replace with your actual bucket name\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r._measurement == \"arduino_data\" and (r._field == \"GyroX\" or r._field == \"GyroY\" or r._field == \"GyroZ\"))\r\n  |> map(fn: (r) => ({ \r\n        _time: r._time, \r\n        _field: r._field, \r\n        _value: r._value / 1000.0  // Divide the value by 1000\r\n    })) \r\n  |> keep(columns: [\"_time\", \"_value\", \"_field\"])\r\n",
+          "query": "from(bucket: \"GPS_MQTT_connection\")  // Replace with your actual bucket name\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r._measurement == \"arduino_data\" and (r._field == \"GyroX\" or r._field == \"GyroY\" or r._field == \"GyroZ\"))\r\n  |> map(fn: (r) => ({ \r\n        _time: r._time, \r\n        _field: r._field, \r\n        _value: r._value / 1000.0  // Divide the value by 1000\r\n    })) \r\n  |> keep(columns: [\"_time\", \"_value\", \"_field\"])\r\n|> aggregateWindow(every: \r\n      if int(v: v.timeRangeStop) - int(v: v.timeRangeStart) < 120 * 60 * 1000000000 then 1s else 1m, \r\n      fn: mean, \r\n      createEmpty: false)",
           "refId": "A"
         }
       ],
@@ -1281,20 +1281,20 @@
       "type": "stat"
     }
   ],
-  "refresh": "auto",
+  "refresh": "5s",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "2024-10-18T08:17:31.000Z",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "New dashboard",
   "uid": "edz5a8za9o4xsc",
-  "version": 34,
+  "version": 36,
   "weekStart": ""
 }
