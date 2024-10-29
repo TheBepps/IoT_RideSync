@@ -45,7 +45,7 @@ sudo systemctl enable grafana-server
 ## Step 5: Configure InfluxDB and Telegraf
 1. Access InfluxDB: Open your web browser and go to `http://<YOUR_RASPBERRY_PI_IP>:8086`. 
    - To find your Raspberry Pi's IP, you can run `hostname -I` in the terminal.
-2. Set your Raspberry Pi's IP to be static using your router's DHCP settings. (Refer to your router's documentation for specific steps.)
+2. Set your Raspberry Pi's IP to be static (in my case 192.168.1.96) using your router's DHCP settings. (Refer to your router's documentation for specific steps.)
 3. Complete the **Initial user setup** in InfluxDB and save your **<YOUR_INFLUX_TOKEN>**.
 4. Create a Telegraf configuration:
    - Navigate to **Load data** > **Telegraf** > **Create Configuration**.
