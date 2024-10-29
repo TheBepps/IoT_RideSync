@@ -16,7 +16,9 @@ sudo apt update && sudo apt upgrade -y
 ```bash
 wget -qO - https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 echo "deb https://repos.influxdata.com/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-udo apt updatesudo apt install influxdb -ysudo systemctl start influxdb
+sudo apt update
+sudo apt install influxdb -y
+sudo systemctl start influxdb
 sudo systemctl enable influxdb
 ```
 
@@ -62,7 +64,7 @@ sudo systemctl enable grafana-server
 
    [Service]
    Environment="INFLUX_TOKEN=<YOUR_INFLUX_TOKEN>"
-   ExecStart=/usr/bin/telegraf --config http://||||<SETUP_INSTRUCTION>(command to start the Telegraf agent running on your machine)||||
+   ExecStart=/usr/bin/telegraf --config http://!!!<SETUP_INSTRUCTION>(command to start the Telegraf agent running on your machine)!!!
    Restart=on-failure
 
    [Install]
