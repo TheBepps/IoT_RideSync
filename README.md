@@ -46,8 +46,8 @@ IoT_RideSync is an IoT-based bike ride logging system that collects, stores, and
 ## System Architecture
 The RideSyncIoT system operates as follows:
 
-1. **Data Collection:** Sensors on the Arduino gather data on GPS location, acceleration, environmental conditions, and suspension movement.
-2. **Data Transmission:** Collected data is sent via BLE to the RideSyncIoT smartphone app.
+1. **Data Collection:** Sensors on the Arduino gather data on acceleration, environmental conditions, and suspension movement.
+2. **Data Transmission:** Collected data is sent via BLE to the RideSyncIoT smartphone app, that also gather data on GPS location.
 3. **Data Storage and Visualization:** The app displays real-time data and uploads it to a Raspberry Pi server via MQTT. Data is stored in InfluxDB and visualized with Grafana for in-depth analysis.
 
 ## Usage
@@ -62,12 +62,11 @@ The RideSyncIoT system operates as follows:
 
 ## Future Improvements
 - **Enhanced Energy Harvesting:** Implement TEG-based energy harvesting to power the system sustainably.
-- **Expanded Connectivity:** Extend system capabilities to include IoT-based bike-to-bike communication.
 - **User Interface Enhancements:** Further development of the RideSyncIoT app for more intuitive data display and interaction.
 - **Additional Sensor Support:** Integrate more environmental sensors for enriched data collection.
 
 ## Acknowledgments
-This project was developed as part of the "Laboratory of Internet of Things" course. Special thanks to the development community for providing essential libraries and tools that enable IoT innovation.
+This project was developed as part of the "Laboratory of Internet of Things" course.
 
 ---
 
